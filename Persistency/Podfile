@@ -1,0 +1,16 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Persistency' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'EncryptedCoreData'
+  # Pods for Persistency
+
+  post_install do | installer |
+    print "SQLCipher: link Pods/Headers/sqlite3.h"
+    system "mkdir -p Pods/Headers/Private && ln -s ../../SQLCipher/sqlite3.h Pods/Headers/Private"
+  end
+
+end
